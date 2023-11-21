@@ -71,6 +71,9 @@ public class TaskServiceImpl implements TaskService {
             if(!id.equals(taskDto.getId())){
                 throw new IllegalArgumentException("Id in request body does not match Task's Id");
             }
+            if(null == taskDto.getTitle()){
+                throw new NullPointerException("Title cannot be null");
+            }
             if(null != taskDto.getDueDate() && !isValidDateFormat(taskDto.getDueDate())){
                 throw new IllegalArgumentException("Date format is not valid");
             }
